@@ -2,7 +2,7 @@
 
 ## Vision
 
-To transform how tourists explore towns and cities by providing beautifully curated, GPS-enabled self-guided tours that let them uncover local stories at their own pace. StepInto connects travelers with authentic culture and history while supporting local storytelling and sustainable tourism.
+Step Into is a beautifully minimal mobile app that lets tourists explore towns like Cobh through immersive, offline self-guided walking tours — blending cultural storytelling with GPS guidance at their own pace.
 
 ## Product Goals (MVP)
 
