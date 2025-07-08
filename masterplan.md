@@ -17,7 +17,7 @@ Step Into is a beautifully simple mobile app that helps tourists explore heritag
 - **Tour Completion Rate**: % of purchasers who finish the tour (reach last stop)
 - **Stop Engagement**: Average number of stops viewed per user
 - **Download Success Rate**: % of completed downloads after payment
-- **Revenue Targets**: Achieve X paid users in the first 3 months post-launch
+- **Revenue Targets**: Achieve 1000 paid users in the first 3 months post-launch
 
 ## Milestones
 
