@@ -2,7 +2,7 @@
 
 ## Vision
 
-Step Into is a beautifully minimal mobile app that lets tourists explore towns like Cobh through immersive, offline self-guided walking tours — blending cultural storytelling with GPS guidance at their own pace.
+Step Into is a beautifully simple mobile app that helps tourists explore heritage towns like Cobh through immersive, offline walking tours — blending cultural storytelling with GPS guidance at their own pace.
 
 ## Product Goals (MVP)
 
