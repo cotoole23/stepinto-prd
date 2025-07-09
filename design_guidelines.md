@@ -145,10 +145,12 @@ All design should follow these rules and refer to the official logo and color pa
 
 - [StepInto Logo PNG](./Original%20Logo.png)
 - [StepInto Symbol PNG](./Original%20Logo%20Symbol.png)
-- [Brand Guidelines PDF](./Brand%20Guidelines.pdf)
+- ![Transparent Logo](https://github.com/user-attachments/assets/16b2a99d-f04f-44c2-ac37-bd8ad22580a3)
+- [Brand Guidelines.pdf](https://github.com/user-attachments/files/21148999/Brand.Guidelines.pdf)
 - [Airbnb Design System](https://airbnb.design/)
 - [Hopper App](https://www.hopper.com/)
 - [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
+
 
 ---
 
