@@ -102,39 +102,45 @@ stop_id (string, nullable), timestamp (timestamp), platform (string)
 
 ---
 
-**### Core Logic & Workflows**
-**1. Tour Preview & Purchase**
-On app open, fetch available towns and tours (from Supabase)
-User previews Stop 1 (all other stops blurred/locked)
-“Buy Tour” triggers Stripe Checkout in webview
-On payment success: app logs purchase in Supabase, downloads all assets, unlocks full map view
+### Core Logic & Workflows
 
-**2. Offline Download & Access**
-After purchase, download all tour data (JSON), images, audio, and offline map tiles
-Download manager shows progress; can resume if interrupted
-If offline, all previously downloaded tours/stops are accessible
-Purchases are device-only (no restore if app is deleted)
+#### 1. Tour Preview & Purchase
+- On app open, fetch available towns and tours (from Supabase)
+- User previews Stop 1 (all other stops blurred/locked)
+- “Buy Tour” triggers Stripe Checkout in webview
+- On payment success: app logs purchase in Supabase, downloads all assets, unlocks full map view
 
-**3. GPS & Map Navigation**
-Mapbox powers interactive map, with stop pins, trails, “you are here” (if GPS allowed)
-All map tiles and pins available offline post-download
-If GPS denied, show static pins and fallback map view
+#### 2. Offline Download & Access
+- After purchase, download all tour data (JSON), images, audio, and offline map tiles
+- Download manager shows progress; can resume if interrupted
+- If offline, all previously downloaded tours/stops are accessible
+- Purchases are device-only (no restore if app is deleted)
 
-**4. Event Logging (Supabase)**
-Log all: previewed stops, purchases, download events, stop/tour completion, download errors
-Metrics drive analytics dashboards and product decisions
+#### 3. GPS & Map Navigation
+- Mapbox powers interactive map, with stop pins, trails, “you are here” (if GPS allowed)
+- All map tiles and pins available offline post-download
+- If GPS denied, show static pins and fallback map view
 
-**5. QA/Admin Mode (Dev Builds Only)**
-Hidden toggle to unlock any tour, reset local state, trigger events for testing
-Not visible in production
+#### 4. Event Logging (Supabase)
+- Log all: previewed stops, purchases, download events, stop/tour completion, download errors
+- Metrics drive analytics dashboards and product decisions
+
+#### 5. QA/Admin Mode (Dev Builds Only)
+- Hidden toggle to unlock any tour, reset local state, trigger events for testing
+- Not visible in production
+
+---
 
 ### Technical Assumptions & Constraints
-- Mapbox is the default map provider (offline maps required). Fallback: OpenStreetMap/MapLibre if Mapbox fails or is unsupported.
+- Mapbox is the default map provider (offline maps required).  
+  Fallback: OpenStreetMap/MapLibre if Mapbox fails or is unsupported.
 - All content, including maps, must be available offline after tour download.
 - Payments handled 100% by Stripe Checkout (no local card processing).
 - No user login or cloud backup (device-only purchases).
 - Supabase is single source of truth for towns, tours, stops, metrics, purchases.
 - Tour content and assets must be finalized before build.
+
+---
 
 ### MVP: Out of Scope
 - User accounts and cross-device purchase recovery
@@ -145,16 +151,28 @@ Not visible in production
 - Gifting, tour sharing, or social features
 - Restore purchases after app deletion
 
+---
+
 ### Analytics & Instrumentation
 - Log the following events (all anonymous via UUID):
--- stop_previewed, purchase_complete, download_started, download_completed, stop_viewed, tour_completed, download_error
+  - `stop_previewed`
+  - `purchase_complete`
+  - `download_started`
+  - `download_completed`
+  - `stop_viewed`
+  - `tour_completed`
+  - `download_error`
 - Success metrics calculated directly via Supabase queries (see masterplan)
+
+---
 
 ### Critical Lovable Features Required
 - Structured Supabase integration for towns, tours, stops, purchase tracking, and metrics
 - Offline asset and map caching after purchase
 - Robust error handling and retry for downloads/purchases
 - QA/Admin mode for dev builds
+
+---
 
 ### Future/Deferred Features
 For post-MVP, enable:
@@ -164,3 +182,4 @@ For post-MVP, enable:
 - New towns/tours
 - Push notifications, marketing, and gifting
 
+---
