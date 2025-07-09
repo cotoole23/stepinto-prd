@@ -183,7 +183,7 @@ graph TD
     G -->|Next Stop| F
     F --> H[Settings/Info]
     F --> I[Offline State Handling]
-'''
+```
 
 ---
 
@@ -218,3 +218,4 @@ All navigation and user state are designed for simplicity and clarity; no nested
 Admin/QA flows must never leak into production releases.
 
 All user roles are anonymous by design.
+
