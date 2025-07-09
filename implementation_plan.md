@@ -98,9 +98,11 @@ id (UUID), user_id (UUID), tour_id (string), purchase_timestamp (timestamp), pla
 id (UUID), user_id (UUID), event_type (string), tour_id (string),
 stop_id (string, nullable), timestamp (timestamp), platform (string)
 
+```
+
 ---
 
-### Core Logic & Workflows
+**### Core Logic & Workflows**
 **1. Tour Preview & Purchase**
 On app open, fetch available towns and tours (from Supabase)
 User previews Stop 1 (all other stops blurred/locked)
