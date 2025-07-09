@@ -1,94 +1,220 @@
-# StepInto App Flow, Pages, and Roles
+# app_flow_pages_and_roles.md
+
+## Overview
+
+This document describes the **core user flows**, app screens, navigation structure, and all user roles for the Step Into MVP.  
+It maps every state from first entry to tour completion, including offline/online logic, preview and purchase gates, and admin/QA controls.  
+All users are anonymous—no sign-in, no profile.
+
+---
 
 ## User Roles
 
-### Anonymous User (Default)
-- Browses tours without login
-- Previews Stop 1 for free
-- Purchases tour via Stripe
-- Downloads content for offline use
+- **Tourist (Anonymous User)**
+    - No login, anonymous ID stored locally on device.
+    - Can preview tours, purchase/unlock, and use content offline.
+- **Admin/QA (Dev/Test Builds Only)**
+    - Hidden debug mode to unlock content, reset state, or simulate events.
+    - Not accessible in production.
 
-### Internal QA (Dev/Test Only)
-- Access hidden admin menu
-- Bypass purchases to unlock tours
-- Trigger test events and reset states
+---
 
-## App Navigation Flow
+## App Pages & Flows
 
-1. **QR Code / Web Entry**
-   - User scans QR code or opens StepIntoApp.com
+### 1. Onboarding Carousel
 
-2. **Onboarding Carousel**
-   - Visual intro with 3–4 slides
-   - Final CTA: “Start Exploring”
+**Purpose:** Welcome and quickly orient the user.
 
-3. **Tour Selection Screen**
-   - Shows available tours (MVP: one tour)
-   - Includes name, summary, duration, distance, accessibility
-   - CTA: “View Tour Details”
+- **Components:**  
+  - 3–4 full-screen slides:  
+    - “Step Into Cobh”
+    - “Explore at your own pace”
+    - “Self-guided, story-rich, offline-ready”
+    - Final slide: “Start Exploring” (CTA)
+  - Buttons: “Skip”, “Continue”
 
-4. **Tour Detail Screen**
-   - Rich description of tour
-   - List/teaser of stops
-   - CTAs:
-     - “Preview Stop 1” (free sample)
-     - “Unlock Tour for €6.99” (purchase)
+- **Logic:**  
+  - Shown only on first launch or after reset.
+  - Skipped after a successful first session.
 
-5. **Stop 1 Preview Screen**
-   - Full access to Stop 1
-   - Map, image, text content
-   - CTA: “Enjoying this? Unlock 7 more stops.”
+---
 
-6. **Stripe Checkout**
-   - External purchase flow via Stripe
+### 2. Tour Selection Screen
 
-7. **Download Progress View**
-   - Loading indicator for tour assets
-   - Toast: “Your tour is ready offline.”
+**Purpose:** Entry hub for available tours.
 
-8. **Full Tour Map View (Post-Purchase)**
-   - Interactive map with all stop pins
-   - Optional path overlay
-   - Tap any stop to open
-   - Resume anytime (offline-enabled)
+- **Components:**  
+  - Town name (e.g., “Cobh”)
+  - Tour card:  
+    - Name, summary, metadata (duration, stops, accessibility)
+    - Hero image, CTA: “View Tour Details”
 
-9. **Stop Detail View**
-   - Title, narrative text, image
-   - “Next Stop” / “Back to Map” buttons
+- **Logic:**  
+  - If only one tour live (MVP), show directly—other towns as “coming soon” with disabled cards.
 
-10. **Settings / Info Page**
-    - Language toggle (placeholder)
-    - App version, privacy policy
+---
 
-11. **Offline Handling**
-    - If tour is downloaded: full access
-    - If not downloaded: prompt to reconnect
+### 3. Tour Detail Screen
 
-12. **Admin QA Mode (Hidden)**
-    - Unlock all stops
-    - Reset local storage
-    - Trigger metrics manually
-    - Accessed via gesture or dev route
+**Purpose:** Describe tour, show stops, preview, and unlock.
 
-## Flow Summary
+- **Components:**  
+  - Tour name, hero image, long description
+  - List/teaser of stops (Stop 1 shown, others locked/blurry)
+  - Notice if multi-language available (MVP: English only)
+  - CTAs:
+    - “Preview Stop 1”
+    - “Unlock Tour for €6.99” (if not yet purchased)
+    - “Resume Tour” (if purchased)
 
-| Step                     | Online? | Offline Support | Notes                                  |
-|--------------------------|---------|------------------|----------------------------------------|
-| QR Scan / Entry          | Yes     | No               | Requires initial connection             |
-| Onboarding Carousel      | Yes     | Cached after use | First launch only                       |
-| Tour Selection           | Yes     | Yes (if cached)  | One tour in MVP                        |
-| Tour Detail              | Yes     | Yes (if cached)  | Teaser view available                  |
-| Stop 1 Preview           | Yes     | Yes              | Only stop visible pre-purchase         |
-| Purchase / Stripe        | Yes     | No               | Requires live payment                  |
-| Download / Unlock        | Yes     | Partially        | Resumes on reconnect                   |
-| Full Tour Map            | Yes     | Yes (if downloaded) | Post-purchase                          |
-| Stop Views               | Yes     | Yes (if downloaded) | Fully functional                       |
-| Settings                 | Yes     | Yes              | Placeholder for future features        |
+- **Logic:**  
+  - If offline and not downloaded, prompt to reconnect.
 
-## Future Flow Additions
-- Tour sharing or gifting
-- Email-based login or recovery
-- Multi-town selection screen
-- Audio-first navigation mode
-- Push notification prompts
+---
 
+### 4. Stop 1 Preview Screen
+
+**Purpose:** Free preview of first stop.
+
+- **Components:**  
+  - Stop 1 title, text, image, “You are here” pin on map
+  - Locked/blurred remaining stops
+  - CTA: “Enjoying this? Unlock 7 more stops to complete the tour.”
+  - Button: “Buy Tour” (triggers Stripe Checkout)
+
+- **Logic:**  
+  - Only Stop 1 fully visible.
+  - Purchase unlocks rest of tour.
+
+---
+
+### 5. Purchase & Download Flow
+
+**Purpose:** Unlock full tour and assets.
+
+- **Components:**  
+  - Stripe Checkout (webview)
+  - Download progress indicator
+  - Toast on completion: “Your tour is ready offline.”
+
+- **Logic:**  
+  - After purchase, app downloads all stops, images, audio, and offline map tiles.
+  - Resume/retry if interrupted.
+
+---
+
+### 6. Full Tour Map View (Post-Purchase)
+
+**Purpose:** Main navigation and discovery view.
+
+- **Components:**  
+  - Interactive map (Mapbox/MapLibre), all stop pins, optional path overlay
+  - “You are here” indicator (if GPS allowed)
+  - Tap pins to open stop detail
+  - Visual tour progress
+
+- **Logic:**  
+  - Pre-purchase: only Stop 1 tappable
+  - Post-purchase: all stops unlocked
+  - Fully offline after download
+
+---
+
+### 7. Stop Detail View (Unlocked)
+
+**Purpose:** View rich content at each stop.
+
+- **Components:**  
+  - Title, full text, image, (optional) audio or links
+  - “Next Stop” and “Back to Map” buttons
+
+- **Logic:**  
+  - Only unlocked stops accessible
+  - Downloaded content always available offline
+
+---
+
+### 8. Settings / Info Screen
+
+**Purpose:** App meta and non-critical actions.
+
+- **Components:**  
+  - Language toggle (disabled in MVP)
+  - FAQ, privacy policy, app version
+  - Placeholder for “Restore Purchases” (future)
+
+---
+
+### 9. Offline State Handling
+
+**Purpose:** Graceful handling of no connectivity.
+
+- **Components:**  
+  - Banner/message if not connected
+  - “You’re offline—please connect to access this tour.”
+  - Retry or fallback flows
+
+- **Logic:**  
+  - All downloaded tours/stops usable offline
+  - New downloads/Stripe require connection
+
+---
+
+### 10. Admin QA Mode (Dev/Test Builds Only)
+
+**Purpose:** Internal testing & metrics validation.
+
+- **Components:**  
+  - Unlock any tour, reset purchase state, trigger metrics events
+  - Accessed via hidden gesture or config
+
+---
+
+## App Flow Diagram (Linear MVP)
+
+```mermaid
+graph TD
+    A[Onboarding] --> B[Tour Selection]
+    B --> C[Tour Detail]
+    C -->|Preview| D[Stop 1 Preview]
+    D -->|Purchase| E[Stripe Checkout]
+    E -->|Download| F[Full Tour Map View]
+    F --> G[Stop Detail View]
+    G -->|Next Stop| F
+    F --> H[Settings/Info]
+    F --> I[Offline State Handling]
+'''
+
+---
+
+Navigation Patterns
+Tab-less, linear flows with direct transitions
+
+CTAs always visible—never hidden in menus
+
+Minimal steps: onboarding → preview → purchase → start tour in 1–2 taps
+
+State Transitions
+First Launch: Onboarding → Tour Selection
+
+Returning User: Tour Selection → (if purchased) Full Tour Map View
+
+Offline Launch: Previously downloaded content only; prompt for connection if not downloaded
+
+App Reset: Onboarding shown again, device/user ID regenerated
+
+Out of Scope for MVP
+No user accounts, no login/logout
+
+No multi-role support (tourist only)
+
+No tour sharing, gifting, or feedback popups during tours
+
+No multi-town navigation grid (other towns = “coming soon”)
+
+Notes
+All navigation and user state are designed for simplicity and clarity; no nested menus or ambiguous flows.
+
+Admin/QA flows must never leak into production releases.
+
+All user roles are anonymous by design.
