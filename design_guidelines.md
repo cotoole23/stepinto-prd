@@ -2,143 +2,153 @@
 
 ## Overview
 
-This document defines the **visual, UX, accessibility, and brand principles** for Step Into—guiding all design and front-end development.  
-It ensures the app feels instantly trustworthy, beautiful, and simple for both tourists and partners.  
+This document defines the **visual, UX, accessibility, and brand principles** for Step Into.  
+All design should follow these rules and refer to the official logo and color palette below.  
 **Inspirations:** Airbnb, Roadtrippers, Hopper.
+
+---
+
+## Logo & Brand Assets
+
+- **Primary Logo:**  
+  ![StepInto Logo](./Original%20Logo.png)
+- **Logo Symbol:**  
+  ![StepInto Symbol](./Original%20Logo%20Symbol.png)
+
+- **Clearspace:**  
+  Logo should always have ample whitespace—never crowded by UI or imagery.
+- **Usage:**  
+  Logo sits top left on splash and onboarding, and bottom/center on marketing.
+
+---
+
+## Colors
+
+| Name        | HEX      | RGB              | Usage                       |
+|-------------|----------|------------------|-----------------------------|
+| Sky Blue    | #62D4F9  | 98, 212, 249     | Accent, backgrounds         |
+| Light Blue  | #9BE0FD  | 155, 224, 253    | Gradients, highlights       |
+| Green       | #4FAC24  | 79, 172, 36      | Buttons, status             |
+| Deep Green  | #126F43  | 18, 111, 67      | Depth, contrast, cards      |
+| Orange      | #C75A29  | 199, 90, 41      | Primary logo, CTA, links    |
+| Deep Orange | #B24E22  | 178, 78, 34      | Logo, text accents          |
+| White       | #FFFFFF  | 255, 255, 255    | Background, text            |
+
+- **Background:** White or soft blue (#9BE0FD)
+- **Primary CTA:** Orange (#C75A29)
+- **Accent/Active:** Sky Blue (#62D4F9)
+- **Success:** Green (#4FAC24)
+- **Depth:** Deep Green (#126F43)
+- **Do not introduce new brand colors without approval.**
+
+---
+
+## Typography
+
+- **Font:** Sora
+    - Headings: Sora 600 (semibold)
+    - Body: Sora 500 (medium)
+- **Hierarchy:**  
+    - H1: 32–40px, H2: 24–28px, Body: 16–18px
+- **Weight:**  
+    - Limit to two weights per screen
+- **Never use text-in-images except logo.**
 
 ---
 
 ## Brand & UX Tone
 
-- **Friendly, Welcoming, and Calm**
-    - Tone: Warm, easy, local, “you’re in good hands”—never transactional or corporate.
-    - Content style: Story-driven, conversational, accessible to ages 18–80.
+- **Friendly, Welcoming, Calm**
+    - Warm, accessible, local tone—never transactional.
+    - Story-driven, approachable copy.
 - **Modern Minimalism**
-    - Lots of whitespace, clear CTAs, uncluttered screens.
-    - One primary action per screen; everything else secondary.
-- **Travel & Discovery**
-    - Use inspiring, real-world photography (never stock).
-    - Subtle, playful accents (illustrations, micro-animations).
+    - Lots of whitespace, one main action per screen.
+    - Uncluttered, intuitive layouts.
+- **Discovery, Not Commerce**
+    - Imagery is always local, real, inviting.
 
 ---
 
-## Visual Identity
+## Iconography & Imagery
 
-- **Colors**
-    - Base: Clean white and soft light grays.
-    - Primary: Deep navy or green (inspired by Cobh’s harbor/town palette).
-    - Accent: Friendly coral or sky blue (for CTAs).
-    - States: Clear, visible success, warning, error (no ambiguous colors).
-- **Typography**
-    - Headings: Rounded, humanist sans-serif (e.g., Airbnb Cereal, Google Sans, or SF Pro Rounded).
-    - Body: Simple, readable sans-serif (e.g., Inter, Roboto, SF Pro).
-    - Max 2 font weights per page (bold for headlines/CTAs, regular for body).
-- **Imagery**
-    - Real photos from Cobh/Ireland—no stock or obvious filters.
-    - Cards use edge-to-edge images, rounded corners (md/lg).
-    - No text embedded in images.
-- **Iconography**
-    - Thin-line, modern icons (see Airbnb, Hopper for style).
-    - Avoid generic system icons (except for OS-required).
-    - Consistent icon sizing and padding.
-- **Spacing & Layout**
-    - Generous padding (min 16–24px around elements).
-    - Responsive to all screen sizes.
-    - Cards, modals, and sheets with soft shadows and 12–24px border-radius.
+- **Icons:**  
+  Thin-line, rounded corners, consistent sizing (see Airbnb/Hopper for inspiration).
+- **Photography:**  
+  Use real Cobh/Ireland photography, no heavy filters or stock.
+- **No icons smaller than 24x24px.**
+
+---
+
+## UI Layout & Spacing
+
+- **Cards:** Rounded corners (min 16px), subtle shadows, soft borders.
+- **Buttons:** Rounded, prominent, use orange/green as CTA.
+- **Padding:** Minimum 16–24px on all sides.
+- **Floating/anchored CTAs only—never in hidden menus.**
+- **Responsive:** All elements scale for small and large devices.
 
 ---
 
 ## Interaction & Microcopy
 
-- **CTAs**
-    - Always visible at decision points (floating/anchored).
-    - Wording: “Unlock Tour,” “Start Exploring,” “Resume Tour.”
-    - Only one primary CTA per screen.
-- **Navigation**
-    - No hidden menus for critical actions.
-    - Tabless, linear flow (see app_flow_pages_and_roles.md).
-- **Feedback**
-    - Use in-app snackbars/banners for messages (never system popups).
-    - Progress bars for downloads; “tour ready offline” confirmation.
-    - Friendly, action-oriented error states (“Tap to retry”).
-- **Onboarding**
-    - Quick, skippable, visually driven (3–4 slides max).
-    - “Skip” or “Start Exploring” always visible.
+- **CTAs:**  
+  - “Unlock Tour”, “Start Exploring”, “Resume Tour”—direct, friendly.
+  - Only one primary CTA per screen.
+- **Navigation:**  
+  - No hidden menus for critical actions.
+  - Tabless, linear flow (see app_flow_pages_and_roles.md).
+- **Feedback:**  
+  - In-app snackbars/banners only, never system popups.
+  - Friendly, clear error/recovery messages.
 
 ---
 
 ## Accessibility
 
-- **WCAG 2.1 Level AA** minimum.
-    - Tap targets: 44x44px or larger.
-    - Contrast ratio: 4.5:1 or higher for all text/icons.
-    - Dynamic type supported; never truncate key info.
-    - All images, icons, and buttons with alt text/labels.
-    - No color-only indicators; always use icons or text.
-    - Supports screen readers; test with VoiceOver and TalkBack.
-- **Multilingual Prep**
-    - No hard-coded English in UI; all copy pulled from content fields.
-    - Avoid text in images.
+- **WCAG 2.1 AA minimum**
+    - Tap targets: ≥44x44px
+    - Contrast: ≥4.5:1
+    - Alt text for all images/icons/buttons
+    - No color-only states; always support with text or icons
+    - Screen reader support required
 
 ---
 
 ## Must Nots & Anti-Patterns
 
-**See also: implementation_plan.md — here for dev/design quick reference.**
-
 1. **Don’t hide critical CTAs or flow steps.**
-    - Avoid: “Unlock Tour” in menus/offscreen.  
-    - Do: Floating or anchored CTAs, always visible.
-2. **Don’t use cluttered or overly dense layouts.**
-    - Avoid: Too much text/images per screen.  
-    - Do: Whitespace, cards, focus on one idea per page.
+2. **Don’t use cluttered or dense layouts.**
 3. **Don’t split core flows into too many steps.**
-    - Minimize taps from preview → purchase → start.
-4. **Don’t use system alerts for downloads/errors.**
-    - Use branded in-app banners/snackbars.
+4. **Don’t use system alerts for download/errors.**
 5. **Don’t block access to downloaded content offline.**
-    - User keeps access unless content deleted.
 6. **Don’t mix too many font styles/sizes.**
-    - Max 2 sizes per card; stick to brand hierarchy.
-7. **Don’t overwhelm with choice (esp. MVP).**
-    - If only Cobh is live, guide user into that tour; show others as disabled.
+7. **Don’t overwhelm with choice (MVP = Cobh only).**
 8. **Don’t interrupt navigation for ratings/promos.**
-    - Only prompt after tour completion or from info screen.
 9. **Don’t use tiny tap targets or low-contrast buttons.**
-    - 44x44px+; high contrast only.
-10. **Don’t show blank or confusing error states.**
-    - Always show recovery/action options.
+10. **Don’t show blank/confusing error states.**
 11. **Don’t over-engineer onboarding.**
-    - 3–4 slides max, always skippable.
-12. **Don’t ignore future language or accessibility prep.**
-    - No hardcoded copy; test all flows with screen readers.
+12. **Don’t ignore multilingual or accessibility prep.**
 
 ---
 
 ## Out of Scope
 
-- No dark mode or extensive theme switching in MVP.
-- No brand mascots, cartoon characters, or playful elements that compete with local imagery.
+- No dark mode or theme switching in MVP.
+- No brand mascots or playful elements that compete with logo.
 - No login/account, no social sharing.
 
 ---
 
-## Future/Expansion Guidance
+## Reference Materials
 
-- Consider “local accent” palette swaps for new towns (while keeping core visual identity).
-- Enable dark mode post-MVP; follow system preferences.
-- Multi-language UI to match content backend.
-
----
-
-## References
-
+- [StepInto Logo PNG](./Original%20Logo.png)
+- [StepInto Symbol PNG](./Original%20Logo%20Symbol.png)
+- [Brand Guidelines PDF](./Brand%20Guidelines.pdf)
 - [Airbnb Design System](https://airbnb.design/)
-- [Roadtrippers UI](https://roadtrippers.com/)
 - [Hopper App](https://www.hopper.com/)
 - [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
 
 ---
 
-*Any updates to design should be recorded here and in Figma. For questions, contact the product owner or lead designer.*
+*All UI and creative decisions should be cross-checked with the latest brand assets and this document.*
 
