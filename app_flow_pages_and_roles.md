@@ -188,35 +188,31 @@ graph TD
 
 ---
 
-Navigation Patterns
-Tab-less, linear flows with direct transitions
+## Navigation Patterns
+- Tab-less, linear flows with direct transitions
+- CTAs always visible—never hidden in menus
+- Minimal steps: onboarding → preview → purchase → start tour in 1–2 taps
 
-CTAs always visible—never hidden in menus
+---
 
-Minimal steps: onboarding → preview → purchase → start tour in 1–2 taps
+## State Transitions
+- First Launch: Onboarding → Tour Selection
+- Returning User: Tour Selection → (if purchased) Full Tour Map View
+- Offline Launch: Previously downloaded content only; prompt for connection if not downloaded
+- App Reset: Onboarding shown again, device/user ID regenerated
 
-State Transitions
-First Launch: Onboarding → Tour Selection
+---
 
-Returning User: Tour Selection → (if purchased) Full Tour Map View
+## Out of Scope for MVP
+- No user accounts, no login/logout
+- No multi-role support (tourist only)
+- No tour sharing, gifting, or feedback popups during tours
+- No multi-town navigation grid (other towns = “coming soon”)
 
-Offline Launch: Previously downloaded content only; prompt for connection if not downloaded
+---
 
-App Reset: Onboarding shown again, device/user ID regenerated
-
-Out of Scope for MVP
-No user accounts, no login/logout
-
-No multi-role support (tourist only)
-
-No tour sharing, gifting, or feedback popups during tours
-
-No multi-town navigation grid (other towns = “coming soon”)
-
-Notes
-All navigation and user state are designed for simplicity and clarity; no nested menus or ambiguous flows.
-
-Admin/QA flows must never leak into production releases.
-
-All user roles are anonymous by design.
+## Notes
+- All navigation and user state are designed for simplicity and clarity; no nested menus or ambiguous flows.
+- Admin/QA flows must never leak into production releases.
+- All user roles are anonymous by design.
 
