@@ -11,9 +11,11 @@ All design should follow these rules and refer to the official logo and color pa
 ## Logo & Brand Assets
 
 - **Primary Logo:**  
-  ![StepInto Logo](./Original%20Logo.png)
+  ![StepInto Logo](![Original Logo](https://github.com/user-attachments/assets/5837c16d-3970-4b7d-b2cc-5c0e89ef50eb)
+)
 - **Logo Symbol:**  
-  ![StepInto Symbol](./Original%20Logo%20Symbol.png)
+  ![StepInto Symbol](![Original Logo Symbol](https://github.com/user-attachments/assets/39cb22b7-1a6f-4e86-b5b6-72e32abfaed5)
+.)
 
 - **Clearspace:**  
   Logo should always have ample whitespace—never crowded by UI or imagery.
